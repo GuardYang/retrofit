@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/retrofit.iml" filepath="$PROJECT_DIR$/.idea/modules/retrofit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/retrofit_main.iml" filepath="$PROJECT_DIR$/.idea/modules/retrofit_main.iml" group="retrofit" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/retrofit_test.iml" filepath="$PROJECT_DIR$/.idea/modules/retrofit_test.iml" group="retrofit" />
+    </modules>
+  </component>
+</project>
