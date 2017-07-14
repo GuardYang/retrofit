@@ -1,6 +1,6 @@
 package com.ysr.rf;
 
-import com.ysr.rf.bean.RequestShipperName;
+import com.ysr.rf.bean.ResultDetail;
 import com.ysr.rf.retrofit.API;
 import com.ysr.rf.retrofit.APIService;
 import com.ysr.rf.retrofit.BaseRetrofit;
@@ -14,7 +14,8 @@ import retrofit2.Response;
 public class MainActivity {
     public static void main(String[] s) {
         String LogisticCode = "1000745320654";
-        String requestData = "{LogisticCode:"+LogisticCode+"}";
+//        String requestData = "{LogisticCode:"+LogisticCode+"}";
+        String requestData = "{'OrderCode':'','ShipperCode':'YD','LogisticCode':'3999043346251'}";
         String RequestData="";
         String DataSign="";
         try {
@@ -25,16 +26,16 @@ public class MainActivity {
             e.printStackTrace();
         }
 
-        BaseRetrofit.getInstance()
+        BaseRetrofit.Companion.getInstance()
                 .createReq(APIService.class)
-                .searchData(RequestData, API.EBusinessID, 2002, 2, DataSign)
-                .enqueue(new Callback<RequestShipperName>() {
+                .searchData(RequestData, API.EBusinessID, 1002, 2, DataSign)
+                .enqueue(new Callback<ResultDetail>() {
                     @Override
-                    public void onResponse(Call<RequestShipperName> call, Response<RequestShipperName> response) {
+                    public void onResponse(Call<ResultDetail> call, Response<ResultDetail> response) {
                     }
 
                     @Override
-                    public void onFailure(Call<RequestShipperName> call, Throwable t) {
+                    public void onFailure(Call<ResultDetail> call, Throwable t) {
                         System.out.println("失败");
                     }
                 });

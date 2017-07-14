@@ -1,6 +1,6 @@
 package com.ysr.rf.retrofit;
 
-import com.ysr.rf.bean.RequestShipperName;
+import com.ysr.rf.bean.ResultDetail;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
@@ -15,10 +15,10 @@ public interface APIService {
      */
     @Headers("Content-Type:application/x-www-form-urlencoded")
     @GET("/Ebusiness/EbusinessOrderHandle.aspx")
-    Call<RequestShipperName> searchData(@Query("RequestData") String RequestData,
-                                        @Query("EBusinessID") int EBusinessID,
-                                        @Query("RequestType") int RequestType,
-                                        @Query("DataType") int DataType,
-                                        @Query("DataSign") String DataSign
+    Call<ResultDetail> searchData(@Query("RequestData") String RequestData,
+                                  @Query("EBusinessID") int EBusinessID,
+                                  @Query("RequestType") int RequestType,
+                                  @Query("DataType") int DataType,
+                                  @Query("DataSign") String DataSign
     );
 }
