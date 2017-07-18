@@ -1,5 +1,6 @@
 package com.ysr.rf;
 
+import com.ysr.rf.bean.RequestShipperName;
 import com.ysr.rf.bean.ResultDetail;
 import com.ysr.rf.retrofit.API;
 import com.ysr.rf.retrofit.APIService;
@@ -28,11 +29,25 @@ public class MainActivity {
 
         BaseRetrofit.getInstance()
                 .createReq(APIService.class)
+                .searchData(RequestData, API.EBusinessID, 2002, 2, DataSign)
+                .enqueue(new Callback<RequestShipperName>() {
+                    @Override
+                    public void onResponse(Call<RequestShipperName> call, Response<RequestShipperName> response) {
+                        System.out.println("第一ok");
+                    }
+
+                    @Override
+                    public void onFailure(Call<RequestShipperName> call, Throwable t) {
+                        System.out.println("失败");
+                    }
+                });
+        BaseRetrofit.getInstance()
+                .createReq(APIService.class)
                 .searchDetailsData(RequestData, API.EBusinessID, 1002, 2, DataSign)
                 .enqueue(new Callback<ResultDetail>() {
                     @Override
                     public void onResponse(Call<ResultDetail> call, Response<ResultDetail> response) {
-                        System.out.println("ok");
+                        System.out.println("第二ok");
                     }
 
                     @Override

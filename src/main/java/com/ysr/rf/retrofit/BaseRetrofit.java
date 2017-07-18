@@ -60,7 +60,7 @@ public class BaseRetrofit {
         LoginInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
 
-        if (!API.DEBUG){
+        if (API.DEBUG){
             builder.addInterceptor( LoginInterceptor);
 //            builder.addInterceptor(new LoggingInterceptor());
         }
