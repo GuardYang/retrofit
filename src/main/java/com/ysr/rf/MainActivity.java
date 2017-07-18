@@ -15,9 +15,9 @@ public class MainActivity {
     public static void main(String[] s) {
         String LogisticCode = "1000745320654";
         // String requestData = "{LogisticCode:"+LogisticCode+"}";
-             String requestData = "{'OrderCode':'','ShipperCode':'YD','LogisticCode':'3999043346251'}";
-        String RequestData="";
-        String DataSign="";
+        String requestData = "{'OrderCode':'','ShipperCode':'YD','LogisticCode':'3999043346251'}";
+        String RequestData = "";
+        String DataSign = "";
         try {
             RequestData = HttpUtils.urlEncoder(requestData, "UTF-8");
             String dataSign = HttpUtils.encrypt(requestData, API.AppKey, "UTF-8");
@@ -26,12 +26,13 @@ public class MainActivity {
             e.printStackTrace();
         }
 
-        BaseRetrofit.Companion.getInstance()
+        BaseRetrofit.getInstance()
                 .createReq(APIService.class)
                 .searchDetailsData(RequestData, API.EBusinessID, 1002, 2, DataSign)
                 .enqueue(new Callback<ResultDetail>() {
                     @Override
                     public void onResponse(Call<ResultDetail> call, Response<ResultDetail> response) {
+                        System.out.println("ok");
                     }
 
                     @Override
@@ -40,7 +41,6 @@ public class MainActivity {
                     }
                 });
     }
-
 
 
 }
