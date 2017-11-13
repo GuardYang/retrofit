@@ -16,13 +16,17 @@ public class MainActivity {
     public static void main(String[] s) {
         String LogisticCode = "1000745320654";
         // String requestData = "{LogisticCode:"+LogisticCode+"}";
-        String requestData = "{'OrderCode':'','ShipperCode':'YD','LogisticCode':'3999043346251'}";
+//        String requestData = "{'OrderCode':'','ShipperCode':'YD','LogisticCode':'3999043346251'}";
         String RequestData = "";
         String DataSign = "";
         try {
-            RequestData = HttpUtils.urlEncoder(requestData, "UTF-8");
-            String dataSign = HttpUtils.encrypt(requestData, API.AppKey, "UTF-8");
+            RequestData = HttpUtils.urlEncoder(LogisticCode, "UTF-8");
+
+            String dataSign = HttpUtils.encrypt(LogisticCode, API.AppKey, "UTF-8");
+            
             DataSign = HttpUtils.urlEncoder(dataSign, "UTF-8");
+            System.out.println("RequestData:"+RequestData.toString());
+            System.out.println("DataSign:"+DataSign.toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -41,20 +45,20 @@ public class MainActivity {
                         System.out.println("失败");
                     }
                 });
-        BaseRetrofit.getInstance()
-                .createReq(APIService.class)
-                .searchDetailsData(RequestData, API.EBusinessID, 1002, 2, DataSign)
-                .enqueue(new Callback<ResultDetail>() {
-                    @Override
-                    public void onResponse(Call<ResultDetail> call, Response<ResultDetail> response) {
-                        System.out.println("第二ok");
-                    }
-
-                    @Override
-                    public void onFailure(Call<ResultDetail> call, Throwable t) {
-                        System.out.println("失败");
-                    }
-                });
+//        BaseRetrofit.getInstance()
+//                .createReq(APIService.class)
+//                .searchDetailsData(RequestData, API.EBusinessID, 1002, 2, DataSign)
+//                .enqueue(new Callback<ResultDetail>() {
+//                    @Override
+//                    public void onResponse(Call<ResultDetail> call, Response<ResultDetail> response) {
+//                        System.out.println("第二ok");
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<ResultDetail> call, Throwable t) {
+//                        System.out.println("失败");
+//                    }
+//                });
     }
 
 

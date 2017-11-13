@@ -10,6 +10,7 @@ import java.security.MessageDigest;
  */
 
 public class HttpUtils {
+
     /**
      * MD5加密
      * @param str 内容
@@ -17,7 +18,7 @@ public class HttpUtils {
      * @throws Exception
      */
     @SuppressWarnings("unused")
-    private static String MD5(String str, String charset) throws Exception {
+    public static String MD5(String str, String charset) throws Exception {
         MessageDigest md = MessageDigest.getInstance("MD5");
         md.update(str.getBytes(charset));
         byte[] result = md.digest();
@@ -38,7 +39,7 @@ public class HttpUtils {
      * @param charset 编码方式
      * @throws UnsupportedEncodingException
      */
-    private static String base64(String str, String charset) throws UnsupportedEncodingException {
+    public static String base64(String str, String charset) throws UnsupportedEncodingException{
         String encoded = base64Encode(str.getBytes(charset));
         return encoded;
     }
@@ -58,7 +59,7 @@ public class HttpUtils {
      * @return DataSign签名
      */
     @SuppressWarnings("unused")
-    public static String encrypt (String content, String keyValue, String charset) throws UnsupportedEncodingException, Exception
+    public static String encrypt(String content, String keyValue, String charset) throws UnsupportedEncodingException, Exception
     {
         if (keyValue != null)
         {
@@ -66,18 +67,6 @@ public class HttpUtils {
         }
         return base64(MD5(content, charset), charset);
     }
-
-
-
-    private static char[] base64EncodeChars = new char[] {
-            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
-            'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
-            'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
-            'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f',
-            'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
-            'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
-            'w', 'x', 'y', 'z', '0', '1', '2', '3',
-            '4', '5', '6', '7', '8', '9', '+', '/' };
 
     public static String base64Encode(byte[] data) {
         StringBuffer sb = new StringBuffer();
@@ -110,4 +99,13 @@ public class HttpUtils {
         }
         return sb.toString();
     }
+    public static char[] base64EncodeChars = new char[] {
+            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
+            'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
+            'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
+            'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f',
+            'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
+            'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+            'w', 'x', 'y', 'z', '0', '1', '2', '3',
+            '4', '5', '6', '7', '8', '9', '+', '/' };
 }
