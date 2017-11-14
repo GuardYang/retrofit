@@ -52,13 +52,20 @@ public class KdniaoTrackQueryAPI {
      * @throws Exception
      */
     public String getOrderTracesByJson(String expCode, String expNo) throws Exception{
-        String requestData= "{'OrderCode':'','ShipperCode':'" + expCode + "','LogisticCode':'" + expNo + "'}";
-
+//        String requestData= "{'OrderCode':'','ShipperCode':'" + expCode + "','LogisticCode':'" + expNo + "'}";
+        String LogisticCode = "1000745320654";
+         String requestData = "{LogisticCode:"+LogisticCode+"}";
+//        String requestData = "{\n" +
+//                "    \"LogisticCode\": \"1000745320654\"\n" +
+//                "}";
         Map<String, String> params = new HashMap<String, String>();
-        params.put("RequestData", urlEncoder(requestData, "UTF-8"));
+        String RequestData = urlEncoder(requestData, "UTF-8");
+        params.put("RequestData",RequestData);
+        System.out.println("RequestData:"+RequestData.toString());
         params.put("EBusinessID", EBusinessID);
         params.put("RequestType", "2002");
         String dataSign=encrypt(requestData, AppKey, "UTF-8");
+        System.out.println("dataSign:"+dataSign.toString());
         params.put("DataSign", urlEncoder(dataSign, "UTF-8"));
         params.put("DataType", "2");
 

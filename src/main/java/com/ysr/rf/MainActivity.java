@@ -15,18 +15,19 @@ import retrofit2.Response;
 public class MainActivity {
     public static void main(String[] s) {
         String LogisticCode = "1000745320654";
-        // String requestData = "{LogisticCode:"+LogisticCode+"}";
+         String requestData = "{LogisticCode:"+LogisticCode+"}";
 //        String requestData = "{'OrderCode':'','ShipperCode':'YD','LogisticCode':'3999043346251'}";
         String RequestData = "";
         String DataSign = "";
         try {
-            RequestData = HttpUtils.urlEncoder(LogisticCode, "UTF-8");
+            RequestData = HttpUtils.urlEncoder(requestData, "UTF-8");
 
-            String dataSign = HttpUtils.encrypt(LogisticCode, API.AppKey, "UTF-8");
-            
-            DataSign = HttpUtils.urlEncoder(dataSign, "UTF-8");
+             DataSign = HttpUtils.encrypt(requestData, API.AppKey, "UTF-8");
+
             System.out.println("RequestData:"+RequestData.toString());
+//            RequestData:%7BLogisticCode%3A1000745320654%7D
             System.out.println("DataSign:"+DataSign.toString());
+//            dataSign:NTFhMDVkYTBlNWYyMDUwZmZlYTY1YjZkODg3Y2QyOTA=
         } catch (Exception e) {
             e.printStackTrace();
         }
